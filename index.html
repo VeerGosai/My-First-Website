@@ -10,77 +10,68 @@
             background-color: #f5f5f5;
         }
 
-        header {
+        /* ... (previous styles) ... */
+
+        /* Light/Dark Mode Toggle */
+        .mode-toggle {
+            text-align: right;
+            padding: 1rem;
             background-color: #333;
+        }
+
+        .mode-toggle label {
             color: #fff;
-            text-align: center;
-            padding: 1rem 0;
+            font-size: 14px;
+            margin-right: 10px;
         }
 
-        nav {
-            background-color: #444;
+        .mode-toggle input[type="checkbox"] {
+            display: none;
         }
 
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
+        .mode-toggle .slider {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 20px;
+            background-color: #ccc;
+            border-radius: 20px;
+            transition: background-color 0.3s;
         }
 
-        nav li {
-            margin: 0;
-            padding: 1rem;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #fff;
-        }
-
-        main {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 2rem;
+        .mode-toggle .slider:before {
+            content: "";
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
             background-color: #fff;
-            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+            left: 2px;
+            top: 1px;
+            transition: left 0.3s;
+        }
+
+        input[type="checkbox"]:checked + .slider {
+            background-color: #007bff;
+        }
+
+        input[type="checkbox"]:checked + .slider:before {
+            left: calc(100% - 20px);
+        }
+
+        /* Simple Image Gallery */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 2rem;
+        }
+
+        .image-gallery img {
+            max-width: 100%;
+            height: auto;
             border-radius: 5px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 1rem;
-            background-color: #444;
-            color: #fff;
-        }
-
-        .contact-section {
-            background-color: #f9f9f9;
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .external-link-section {
-            background-color: #fff;
-            padding: 2rem;
-            text-align: center;
-        }
-
-        /* New color styles */
-        h2 {
-            color: #333;
-            border-bottom: 2px solid #333;
-            padding-bottom: 0.5rem;
-        }
-
-        a {
-            color: #007bff;
-        }
-
-        a:hover {
-            color: #0056b3;
-            text-decoration: underline;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
@@ -90,35 +81,50 @@
     </header>
 
     <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
+        <!-- ... (navigation menu) ... -->
     </nav>
 
     <main>
         <h2>About Me</h2>
         <p>I'm currently a South African student who wants to study Computer Science.</p>
+
+        <!-- Simple Image Gallery -->
+        <div class="image-gallery">
+            <img src="image1.jpg" alt="Image 1">
+            <img src="image2.jpg" alt="Image 2">
+            <img src="image3.jpg" alt="Image 3">
+        </div>
     </main>
 
     <!-- Contact Section -->
     <section class="contact-section">
-        <h2>Contact Me</h2>
-        <p>If you have any questions, feel free to email me at <a href="mailto:contact@sapapers.co.za">contact@sapapers.co.za</a> (My Business Email).</p>
+        <!-- ... (contact section content) ... -->
     </section>
 
     <!-- External Link Section -->
     <section class="external-link-section">
-        <h2>Check Out My Other Websites</h2>
-        <p><a href="http://sapapers.co.za" target="_blank" rel="noopener noreferrer">sapapers.co.za</a></p>
-        <p><a href="http://zambiapaper.co.zm" target="_blank" rel="noopener noreferrer">zambiapaper.co.zm</a></p>
-        <p><a href="http://rwandapaper.co.rw" target="_blank" rel="noopener noreferrer">rwandapaper.co.rw</a></p>
-        <p><a href="http://indiapapers.co.in" target="_blank" rel="noopener noreferrer">indiapapers.co.in</a></p>
+        <!-- ... (external link section content) ... -->
     </section>
+
+    <!-- Light/Dark Mode Toggle -->
+    <div class="mode-toggle">
+        <label for="mode-switch">Dark Mode</label>
+        <label class="switch">
+            <input type="checkbox" id="mode-switch">
+            <span class="slider"></span>
+        </label>
+    </div>
 
     <footer>
         <p>&copy; 2023 Veer Gosai</p>
     </footer>
+
+    <!-- Script for Light/Dark Mode Toggle -->
+    <script>
+        const modeSwitch = document.getElementById('mode-switch');
+        modeSwitch.addEventListener('change', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+    </script>
 </body>
 </html>
